@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <div class="container">
-        <h3>Flights from Paris to Buenos Aires: </h3>
+ <?php
+    if (isset($_POST['depature']) && isset($_POST['Dest'])) {
+        $depature = $_POST['depature'];
+        $dest = $_POST['Dest'];
+        echo "<h3>Flights from $depature to $dest:</h3>";
+    }
+?>
     <table class="table">
         <thead>
         <tr>
             <th>Choose</th>
             <th>Flight #</th>
             <th>Airline</th>
-            <th>Departs: Paris</th>
-            <th>Arrives: Buenos Aires</th>
+		<?php
+    			if (isset($_POST['depature'])) {
+        		$depature = $_POST['depature'];
+        		echo "<th>Departs: $depature </th>";
+    			}
+		?>
+            <?php
+    			if (isset($_POST['Dest'])) {
+        		$dest = $_POST['Dest'];
+        		echo "<th>Arrives: $dest </th>";
+    			}
+		?>
             <th>Price</th>
         </tr>
         </thead>
@@ -96,3 +112,4 @@
     <input type="hidden" name="toPort" value="Buenos Aires"/>
     </div>
 </div>
+
