@@ -33,6 +33,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/Vacaciones.php','Home::Vacaciones');
 $routes->get('/login.php','Home::login');
 $routes->get('/registro.php','Home::registro');
+$routes->get('/reservar.php','Home::reservar');
 use App\Controllers\Home;
 
 //$routes->get('pages', [Home::class, 'index']);
