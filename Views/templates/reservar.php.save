@@ -1,40 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <div class="container">
- <?php
-    if (isset($_POST['depature']) && isset($_POST['Dest'])) {
-        $depature = $_POST['depature'];
-        $dest = $_POST['Dest'];
-        echo "<h3>Flights from $depature to $dest:</h3>";
-    }
-?>
+        <h3>Flights from Paris to Buenos Aires: </h3>
     <table class="table">
         <thead>
         <tr>
             <th>Choose</th>
             <th>Flight #</th>
             <th>Airline</th>
-		<?php
-    			if (isset($_POST['depature'])) {
-        		$depature = $_POST['depature'];
-        		echo "<th>Departs: $depature </th>";
-    			}
-		?>
-            <?php
-    			if (isset($_POST['Dest'])) {
-        		$dest = $_POST['Dest'];
-        		echo "<th>Arrives: $dest </th>";
-    			}
-		?>
+            <th>Departs: Paris</th>
+            <th>Arrives: Buenos Aires</th>
             <th>Price</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <form name="VA43" method="post" action="compra.php">
+            <form name="VA43" method="post" action="purchase.php">
                 <td><input type="submit" class="btn btn-small" value="Choose This Flight"></td>
                 <td>43</td>
-                <td>Virgin America</td>
+                <td>Virgin America</td>  </div>
+    </div>  </div>
+  
                 <td>1:43 AM</td>
                 <td>9:45 PM</td>
                 <td>$472.56</td>
@@ -46,7 +32,7 @@
             </form>
         </tr>
         <tr>
-            <form name="UA234" method="post" action="compra.php">
+            <form name="UA234" method="post" action="purchase.php">
                 <td><input type="submit" class="btn btn-small" value="Choose This Flight"></td>
                 <td>234</td>
                 <td>United Airlines</td>
@@ -61,7 +47,7 @@
             </form>
         </tr>
         <tr>
-            <form name="AL969" method="post" action="compra.php">
+            <form name="AL969" method="post" action="purchase.php">
                 <td><input type="submit" class="btn btn-small" value="Choose This Flight"></td>
                 <td>9696</td>
                 <td>Aer Lingus</td>
@@ -77,7 +63,7 @@
 
         </tr>
         <tr>
-            <form name="VA12" method="post" action="compra.php">
+            <form name="VA12" method="post" action="purchase.php">
                 <td><input type="submit" class="btn btn-small" value="Choose This Flight"></td>
                 <td>12</td>
                 <td>Virgin America</td>
@@ -92,7 +78,7 @@
             </form>
         </tr>
         <tr>
-            <form name="L4346" method="post" action="compra.php">
+            <form name="L4346" method="post" action="purchase.php">
                 <td><input type="submit" class="btn btn-small" value="Choose This Flight"></td>
                 <td>4346</td>
                 <td>Lufthansa</td>
@@ -112,4 +98,3 @@
     <input type="hidden" name="toPort" value="Buenos Aires"/>
     </div>
 </div>
-

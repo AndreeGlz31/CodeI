@@ -29,4 +29,9 @@ class Home extends BaseController
 			.view('templates/reservar')
 			.view('templates/footer');
 	}
+	public function compra(){
+		return	view('templates/header')
+			.view('templates/compra')
+			.view('templates/footer');
+	}
 }
