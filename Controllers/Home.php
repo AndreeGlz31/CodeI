@@ -34,7 +34,8 @@ class Home extends BaseController
 			.view('templates/reservar',$data)
 			.view('templates/footer');
 	}
-	public function compra(){
+	public function compra($idVuelos){
+
 		return	view('templates/header')
 			.view('templates/compra')
 			.view('templates/footer');
