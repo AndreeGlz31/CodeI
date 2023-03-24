@@ -1,6 +1,8 @@
 <?php
 namespace App\Controllers;
 use CodeIgniter\Exceptions\PageNotFoundException;
+use App\Models\VuelosModel;
+
 class Home extends BaseController
 {
     public function index()
@@ -25,8 +27,11 @@ class Home extends BaseController
 		.view('templates/footer');
 	}
 	public function reservar(){
+
+  	$model = new VuelosModel();
+        $data['vuelos'] = $model->findAll();
 		return	view('templates/header')
-			.view('templates/reservar')
+			.view('templates/reservar',$data)
 			.view('templates/footer');
 	}
 	public function compra(){
