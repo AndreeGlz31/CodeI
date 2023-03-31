@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <div class="container">
-<h3>Flights from: <?=$vuelos[0]['PaisOrigen']?> to <?=$vuelos[0]['PaisDestino']?></h3>
+ <?php
+	foreach
+	<h3>Flights from: <?=$vuelo['PaisOrigen']?> to <?=$vuelo['PaisDestino']?></h3>
+
     <table class="table">
         <thead>
         <tr>
             <th>Choose</th>
             <th>Flight #</th>
             <th>Airline</th>
-	    <th>Departs: <?=$vuelos[0]['PaisOrigen']?></th>
-	    <th>Arrives: <?=$vuelos[0]['PaisDestino']?></th>
+		<?php
+			foreach($vuelos as $vuelo) : ?>
+			<th>Departs: <?=$vuelo['PaisOrigen']?></th>
+		<?php endforeach; ?>
+
+            <?php
+    			foreach($vuelos as $vuelo) : ?>
+			<th>Arrives: <?=$vuelo['PaisDestino']?></th>
+		<?php endforeach; ?>
             <th>Price</th>
         </tr>
         </thead>
@@ -18,7 +28,7 @@
 	foreach ($vuelos as $vuelo) : ?>
 
        <tr>
-	<form name="VA43" method="post" action="compra.php/<?= $vuelo['IDVuelo'] ?>">
+	<form name="VA43" method="post" action="compra.php">
            <td><input type="submit" class="btn btn-small" value="Choose This Flight"></td>
             <td><?= $vuelo['IDVuelo'] ?></td>
             <td><?= $vuelo['Aerolinea'] ?></td>

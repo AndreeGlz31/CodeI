@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Models;
+
+use CodeIgniter\Model;
+
+class VuelosModel extends Model
+{
+    protected $table = 'Vuelos';
+    protected $primaryKey = 'IDVuelo';
+    protected $allowedFields = ['Aerolinea', 'HoraDespeje', 'HoraAterrizaje','PaisOrigen','PaisDesino', 'Precio'];
+
+public function getVuelos($depature, $dest)
+{
+    $builder = $this->db->table('Vuelos');
+    $builder->where('PaisOrigen', $depature);
+    $builder->where('PaisDestino', $dest);
+    $query = $builder->get();
+    return $query->getResultArray();
+}
+public function compra($idVuelo)
+{
+    // Cargar el modelo de Vuelos
+    $this->load->model('VuelosModel');
+
+    // Obtener el vuelo por ID
+    $vuelo = $this->VuelosModel->getVueloById($idVuelo);
+
+    // Pasar los datos del vuelo a la vista
+    $data = [
+        'paisOrigen' => $vuelo['PaisOrigen'],
+        'paisDestino' => $vuelo['PaisDestino'],
+        'aerolinea' => $vuelo['Aerolinea'],
+        'idVuelo' => $vuelo['IDVuelo'],
+        'precio' => $vuelo['Precio']
+    ];
+
+    // Cargar la vista de compra con los datos del vuelo
+    $this->load->view('templates/header');
+    $this->load->view('templates/compra', $data);
+    $this->load->view('templates/footer');
+}
+}
+
+

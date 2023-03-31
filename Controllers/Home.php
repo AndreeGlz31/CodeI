@@ -36,10 +36,19 @@ class Home extends BaseController
 			.view('templates/reservar',$data)
 			.view('templates/footer');
 	}
-	public function compra(){
+	public function compra($IDVuelo){
+	if($this->request->getMethod()==='post'){
+		// Cargar el modelo de Vuelos
+		$model = new VuelosModel();
+		// Obtener el vuelo por ID
+    		$vuelos = $model->getVueloById($IDVuelo);
+	}
+
+    	// Pasar los datos del vuelo a la vista
+     	$data = $vuelos;
 
 		return	view('templates/header')
-			.view('templates/compra')
+			.view('templates/compra',['data' =>(array) $data])
 			.view('templates/footer');
 	}
 

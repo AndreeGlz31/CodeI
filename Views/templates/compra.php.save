@@ -1,11 +1,11 @@
 <div class="container">
-	 <h2>Your Flight from: <?=$data['PaisOrigen']?> to <?=$data['PaisDestino']?> has been reserved</h2>
-    <p>Airline: <?=$data['Aerolinea']?></p>
-    <p>Flight Number: <?=$data['IDVuelo']?></p>
-    <p>Price: <?=$data['Precio']?></p>
-    <p>Arbitrary Fees and Taxes: <?=$data['Precio']*0.15?></p>
+	 <h2>Your Flight from: <?=$<vuelos[0]['PaisOrigen']?> to <?=$vuelos[0]['PaisDestino']?>has been reserved</h2>
+    <p>Airline: United</p>
+    <p>Flight Number: UA954</p>
+    <p>Price: 400</p>
+    <p>Arbitrary Fees and Taxes: 514.76</p>
     <hr></hr>
-    <p>Total Cost: <em><?=$data['Precio']*1.15?></em></p>
+    <p>Total Cost: <em>914.76 </em></p>
     <p>Please submit the form below to purchase the flight.</p>
 
     <form method="POST" action="confirmacion.php" accept-charset="UTF-8"><input name="_token" type="hidden">

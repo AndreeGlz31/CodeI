@@ -18,6 +18,14 @@ public function getVuelos($depature, $dest)
     $query = $builder->get();
     return $query->getResultArray();
 }
+public function getVueloById($id)
+{
+    $builder = $this->db->table('Vuelos');
+    $builder->where('IDVuelo', $id);
+    $query = $builder->get();
+    return $query->getRow(); // Usamos getRow en lugar de getResultArray ya que esperamos un solo registro
+}
+
 }
 
 

@@ -44,7 +44,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a href="index.php" class="navbar-brand">Travel The World</a>
+            <a href="http://agonzalez.doqimi.net/index.php" class="navbar-brand">Travel The World</a>
             <a href="login.php" class="navbar-brand">Home</a>
             </div>
         </div>
