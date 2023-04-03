@@ -1,14 +1,28 @@
 <div class="container">
-	 <h2>Your Flight from: <?=$data['PaisOrigen']?> to <?=$data['PaisDestino']?> has been reserved</h2>
-    <p>Airline: <?=$data['Aerolinea']?></p>
-    <p>Flight Number: <?=$data['IDVuelo']?></p>
-    <p>Price: <?=$data['Precio']?></p>
-    <p>Arbitrary Fees and Taxes: <?=$data['Precio']*0.15?></p>
+	 <h2>Your Flight from: <?=$data['PaisOrigen']?> to <?=$data['PaisDestino']?>has been reserved</h2>
+    <p>Airline: United</p>
+    <p>Flight Number: public function compra($IDVuelo){
+        if($this->request->getMethod()==='post'){
+                // Cargar el modelo de Vuelos
+                $model = new VuelosModel();
+                // Obtener el vuelo por ID
+                $vuelos = $model->getVueloById($IDVuelo);
+        }
+
+        // Pasar los datos del vuelo a la vista
+        $data = $vuelos;
+
+                return  view('templates/header')
+                        .view('templates/compra',['data' => $data])
+                        .view('templates/footer');
+        }</p>
+    <p>Price:<?=$data['Precio']?></p>
+    <p>Arbitrary Fees and Taxes: 514.76</p>
     <hr></hr>
-    <p>Total Cost: <em><?=$data['Precio']*1.15?></em></p>
+    <p>Total Cost: <em>914.76 </em></p>
     <p>Please submit the form below to purchase the flight.</p>
 
-    <form method="POST" action="confirmar.php" accept-charset="UTF-8"><input name="_token" type="hidden">
+    <form method="POST" action="confirmacion.php" accept-charset="UTF-8"><input name="_token" type="hidden">
     <div class="control-group">
         <label class="control-label" for="inputName">Name</label>
         <div class="controls">

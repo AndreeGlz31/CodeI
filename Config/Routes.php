@@ -35,6 +35,8 @@ $routes->get('/login.php','Home::login');
 $routes->get('/registro.php','Home::registro');
 $routes->post('/reservar.php','Home::reservar');
 $routes->post('/compra.php/(:num)','Home::compra/$1');
+$routes->post('compra.php/confirmar.php','Home::confirmar');
+
 use App\Controllers\Home;
 
 //$routes->get('pages', [Home::class, 'index']);
