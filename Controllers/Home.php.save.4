@@ -49,32 +49,43 @@ class Home extends BaseController
     		// Pasar los datos del vuelo a la vista
     		$data = $vuelos;
 
+	if ($this->request->getMethod() === 'post') {
+        	// Capturar los datos del formulario
+        	$nombre = $this->request->getPost('nombre');
+        	$direccion = $this->request->getPost('direccion');
+        	$ciudad = $this->request->getPost('ciudad');
+        	$estado = $this->request->getPost('estado');
+        	$cp = $this->request->getPost('cp');
+        	$tarjeta = $this->request->getPost('tarjeta');
+        	$mes = $this->request->getPost('mes');
+        	$anio = $this->request->getPost('anio');
+        	$nombre_tarjeta = $this->request->getPost('nombre_tarjeta');
+
+        // Validar los datos del formulario (puedes usar las herramientas de validación de CodeIgniter 4)
+	 if (!empty($nombre) && !empty($direccion) && !empty($ciudad) && 
+		!empty($estado) && !empty($cp) && !empty($tarjeta) && 
+		!empty($mes) && !empty($anio) && !empty($nombre_tarjeta)) {
+        // Insertar los datos en la tabla de compras
+        	$compraModel = new CompraModel();
+        	$compraData = [
+            		'IDVuelo' => $IDVuelo,
+            		'Nombre' => $nombre,
+            		'Direccion' => $direccion,
+            		'Ciudad' => $ciudad,
+            		'Estado' => $estado,
+            		'CP' => $cp,
+            		'TarjetaCredito' => $tarjeta,
+            		'MES' => $mes,
+            		'ANIO' => $anio,
+            		'NombreTarjeta' => $nombre_tarjeta
+        		];
+
+
+		}
         	return  view('templates/header')
                 	.view('templates/compra',['data' =>(array) $data])
                 	.view('templates/footer');
-	}
-	public function InsertarCompra(){
-	// Capturar los datos del formulario
-    		$compra = [
-        		'Nombre' => $this->request->getPost('Nombre'),
-        		'Direccion' => $this->request->getPost('Direccion'),
-        		'Ciudad' => $this->request->getPost('Ciudad'),
-        		'Estado' => $this->request->getPost('Estado'),
-        		'CP' => $this->request->getPost('CP'),
-        		'TipoTarjeta' => $this->request->getPost('TipoTarjeta'),
-        		'TarjetaCredito' => $this->request->getPost('TarjetaCredito'),
-        		'Mes' => $this->request->getPost('Mes'),
-        		'Anio' => $this->request->getPost('Anio'),
-        		'NombreTarjeta' => $this->request->getPost('NombreTarjeta')
-			];
-			$compraModel = new CompraModel();
-
-    			// Insertar los datos en la tabla de compras
-    			$compraModel->insert($compra);
-
-	return	view('templates/header')
-		.view('templates/confirmar')
-		.view('templates/footer');
+    		}
 	}
 	public function confirmar(){
 	return	view('templates/header')

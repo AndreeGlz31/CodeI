@@ -10,15 +10,15 @@ class CompraModel extends Model
     protected $primaryKey = 'IDCompra';
 
     protected $allowedFields = [
-        'IDVuelo',
         'Nombre',
         'Direccion',
         'Ciudad',
         'Estado',
         'CP',
+	'TipoTarjeta',
         'TarjetaCredito',
-        'MES',
-        'ANIO',
+        'Mes',
+        'Anio',
         'NombreTarjeta'
     ];
 

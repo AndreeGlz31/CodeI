@@ -10,45 +10,43 @@
 
     <form method="POST" action="confirmar.php" accept-charset="UTF-8">
 	<input name="_token" type="hidden">
+	<input type="hidden" name="IDVuelo" value="<?=$data['IDVuelo']?>">
+
     <div class="control-group">
         <label class="control-label" for="Nombre">Name</label>
         <div class="controls">
-            <input id="inputNombre" placeholder="First Last" id="Nombre" name="Nombre" type="text">
+            <input id="inputName" placeholder="First Last" name="inputName" type="text">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="address">Address</label>
+        <div class="controls">
+            <input type="text" name="address" id="address" placeholder="123 Main St.">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="city">City</label>
+        <div class="controls">
+            <input type="text" name="city" id="city" placeholder="Anytown">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="state">State</label>
+        <div class="controls">
+            <input type="text" name="state" id="state" placeholder="State">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="zipCode">Zip Code</label>
+        <div class="controls">
+            <input type="text" name="zipCode" id="zipCode" placeholder="12345">
         </div>
     </div>
 
     <div class="control-group">
-        <label class="control-label" for="Direccion">Address</label>
+        <label class="control-label" for="creditCardType">Card Type</label>
         <div class="controls">
-            <input type="text" name="Direccion" id="Direccion" placeholder="123 Main St.">
-        </div>
-    </div>
-
-    <div class="control-group">
-        <label class="control-label" for="Ciudad">City</label>
-        <div class="controls">
-            <input type="text" name="Ciudad" id="Ciudad" placeholder="Anytown">
-        </div>
-    </div>
-
-    <div class="control-group">
-        <label class="control-label" for="Estado">State</label>
-        <div class="controls">
-            <input type="text" name="Estado" id="Estado" placeholder="State">
-        </div>
-    </div>
-
-    <div class="control-group">
-        <label class="control-label" for="CP">Zip Code</label>
-        <div class="controls">
-            <input type="text" name="CP" id="CP" placeholder="12345">
-        </div>
-    </div>
-
-    <div class="control-group">
-        <label class="control-label" for="TipoTarjeta">Card Type</label>
-        <div class="controls">
-            <select class="form-inline" name="TipoTarjeta" id="TipoTarjeta">
+            <select class="form-inline" name="cardType" id="cardType">
                 <option value="visa">Visa</option>
                 <option value="amex">American Express</option>
                 <option value="dinersclub">Diner's Club</option>
@@ -57,30 +55,30 @@
     </div>
 
     <div class="control-group">
-        <label class="control-label" for="TarjetaCredito">Credit Card Number</label>
+        <label class="control-label" for="creditCardNumber">Credit Card Number</label>
         <div class="controls">
-            <input type="text" id="TarjetaCredito" name="TarjetaCredito" placeholder="Credit Card Number">
+            <input type="text" id="creditCardNumber" name="creditCardNumber" placeholder="Credit Card Number">
         </div>
     </div>
 
     <div class="control-group">
-        <label class="control-label" for="Mes">Month</label>
+        <label class="control-label" for="creditCardMonth">Month</label>
         <div class="controls">
-            <input type="text" id="Mes" name="Mes" placeholder="Month" value="11">
+            <input type="text" id="creditCardMonth" name="creditCardMonth" placeholder="Month" value="11">
         </div>
     </div>
 
     <div class="control-group">
-        <label class="control-label" for="Anio">Year</label>
+        <label class="control-label" for="creditCardYear">Year</label>
         <div class="controls">
-            <input type="text" id="Anio" name="Anio" placeholder="Year" value="2017">
+            <input type="text" id="creditCardYear" name="creditCardYear" placeholder="Year" value="2017">
         </div>
     </div>
 
     <div class="control-group">
-        <label class="control-label" for="NombreTarjeta">Name on Card</label>
+        <label class="control-label" for="nameOnCard">Name on Card</label>
         <div class="controls">
-            <input type="text" id="NombreTarjeta" placeholder="John Smith" name="NombreTarjeta">
+            <input type="text" id="nameOnCard" placeholder="John Smith" name="nameOnCard">
         </div>
     </div>
 
