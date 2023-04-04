@@ -9,6 +9,8 @@
     <p>Please submit the form below to purchase the flight.</p>
 
     <form method="POST" action="confirmar.php" accept-charset="UTF-8">
+	<input id="inputIDVuelo" name="IDVuelo" type="hidden" value="<?= $data['IDVuelo'] ?>" readonly>
+
 	<input name="_token" type="hidden">
     <div class="control-group">
         <label class="control-label" for="Nombre">Name</label>

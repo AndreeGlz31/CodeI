@@ -56,6 +56,7 @@ class Home extends BaseController
 	public function InsertarCompra(){
 	// Capturar los datos del formulario
     		$compra = [
+			'IDVuelo' =>$this->request->getPost('IDVuelo'),
         		'Nombre' => $this->request->getPost('Nombre'),
         		'Direccion' => $this->request->getPost('Direccion'),
         		'Ciudad' => $this->request->getPost('Ciudad'),
