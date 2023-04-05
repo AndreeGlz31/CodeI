@@ -36,7 +36,7 @@ $routes->get('/registro.php','Home::registro');
 $routes->post('/reservar.php','Home::reservar');
 $routes->post('/compra.php/(:num)','Home::compra/$1');
 $routes->add('/compra.php/confirmar.php','Home::InsertarCompra');
-$routes->post('/compra.php/confirmar.php/(:num)','Home::verCompra/$1');
+//$routes->post('/compra.php/recibo.php/(:num)','Home::verCompra/$1');
 
 use App\Controllers\Home;
 

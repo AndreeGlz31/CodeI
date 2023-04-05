@@ -73,22 +73,26 @@ class Home extends BaseController
 
     			// Insertar los datos en la tabla de compras
     			$compraModel->insert($compra);
+			$compraModel = new CompraModel();
+			 // Obtener los datos de la compra y el vuelo
+        		$compraVuelo = $compraModel->getRecibo($compra['IDVuelo']);
+
 
 		return	view('templates/header')
-			.view('templates/confirmar')
+			.view('templates/confirmar',['compraVuelo' => $compraVuelo])
 			.view('templates/footer');
 	}
-	public function VerCompra($idvuelos){
-	 if($this->request->getMethod()==='post'){
-		$model = new CompraModel();
-		$compras = $model->getRecibo($idvuelos);
-		}
-		$data = $compras;
+	//public function VerCompra($idvuelos){
+	 //if($this->request->getMethod()==='post'){
+	//	$model = new CompraModel();
+	//	$compras = $model->getRecibo($idvuelos);
+	//	}
+	//	$data = $compras;
 
 
-	return	view('templates/header')
-		.view('templates/confirmar',['data' =>(array)$data])
-		.view('templates/footer');
-	}
+	//	return	view('templates/header')
+	//		.view('templates/recibo',['data' =>(array)$data])
+	//		.view('templates/footer');
+	//}
 
 }

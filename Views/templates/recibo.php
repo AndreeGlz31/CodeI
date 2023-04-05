@@ -10,24 +10,24 @@
             </thead>
             <tbody>
                      <tr>
-                    <td>Id</td>
-                    <td><?=$compraVuelo['IDCompra']?></td>
+                    <td>Id <?=$data['IDVuelo']?></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Status</td>
-                    <td>Completed</td>
+                    <td>PendingCapture</td>
                 </tr>
                 <tr>
                     <td>Amount</td>
-                    <td><?=$compraVuelo['Precio']*1.15?></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Card Number</td>
-                    <td><?=$compraVuelo['TarjetaCredito']?></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Expiration</td>
-                    <td><?=$compraVuelo['Mes']?>/<?=$compraVuelo['Anio']?></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Auth Code</td>
@@ -44,4 +44,3 @@
             </tr>
             </tbody>
         </table>
-
