@@ -47,7 +47,7 @@ class Home extends BaseController
         	$vuelos = $model->getVueloById($IDVuelo);
     		}
 
-    		// Pasar los datos a la vista
+    		// Pasar los datos del vuelo a la vista
     		$data = $vuelos;
 
         	return  view('templates/header')
@@ -72,22 +72,18 @@ class Home extends BaseController
 			$compraModel = new CompraModel();
 
     			// Insertar los datos en la tabla de compras
-    			$compraModel->insert($compra);
+    			$compraModel->insert($compra
 
 		return	view('templates/header')
-			.view('templates/confirmar')
+			.view('templates/confirmar',['data' =>(array) $datos])
 			.view('templates/footer');
 	}
-	public function VerCompra($idvuelos){
-	 if($this->request->getMethod()==='post'){
-		$model = new CompraModel();
-		$compras = $model->getRecibo($idvuelos);
-		}
-		$data = $compras;
-
+	public function VerCompra($idCompra){
+	 
+	
 
 	return	view('templates/header')
-		.view('templates/confirmar',['data' =>(array)$data])
+		.view('templates/confirmar',)
 		.view('templates/footer');
 	}
 

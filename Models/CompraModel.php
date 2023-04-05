@@ -23,5 +23,18 @@ class CompraModel extends Model
         'NombreTarjeta'
     ];
 
-    // Aquí podrías definir otros métodos para personalizar el comportamiento del modelo
+    public function getCompraVuelo($IDVuelo) {
+    $builder = $this->db->table('Compra');
+    $builder->where('IDVuelo', $IDVuelo);
+    $query = $builder->get();
+    return $query->getRowArray();
+}
+ 	public function getRecibo($IDVuelo) {
+        	$builder = $this->db->table('Compra');
+        	$builder->select('*');
+        	$builder->join('Vuelos', 'Vuelos.IDVuelo = Compra.IDVuelo');
+        	$builder->where('Compra.IDVuelo', $IDVuelo);
+        	$query = $builder->get();
+        	return $query->getRowArray();
+    }
 }

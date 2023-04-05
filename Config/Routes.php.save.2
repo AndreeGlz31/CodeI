@@ -35,8 +35,37 @@ $routes->get('/login.php','Home::login');
 $routes->get('/registro.php','Home::registro');
 $routes->post('/reservar.php','Home::reservar');
 $routes->post('/compra.php/(:num)','Home::compra/$1');
-$routes->add('/compra.php/confirmar.php','Home::InsertarCompra');
-$routes->post('/compra.php/confirmar.php/(:num)','Home::verCompra/$1');
+$routes->post('compra.php/confirmar.php','Home::confirmar');
+Este es mi modelo de compra
+<?php
+
+namespace App\Models;
+
+use CodeIgniter\Model;
+
+class CompraModel extends Model
+{
+    protected $table = 'Compra';
+    protected $primaryKey = 'IDCompra';
+
+    protected $allowedFields = [
+        'Nombre',
+        'Direccion',
+        'Ciudad',
+        'Estado',
+        'CP',
+        'TipoTarjeta',
+        'TarjetaCredito',
+        'Mes',
+        'Anio',
+        'NombreTarjeta'
+    ];
+
+    // Aquí podrías definir otros métodos para personalizar el comportamiento del modelo
+}
+
+podrias aydarme a insertar datos con esos campos del modelo estoy en codeigniter 4
+
 
 use App\Controllers\Home;
 

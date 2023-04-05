@@ -8,8 +8,14 @@
     <p>Total Cost: <em><?=$data['Precio']*1.15?></em></p>
     <p>Please submit the form below to purchase the flight.</p>
 
-    <form method="POST" action="confirmar.php/<?= $data['IDVuelo'] ?>" accept-charset="UTF-8">
-	<input id="inputIDVuelo" name="IDVuelo" type="hidden" value="<?= $data['IDVuelo'] ?>" readonly>
+    <form method="POST" action="confirmar.php" accept-charset="UTF-8">
+	<input name="_token" type="hidden">
+    <div class="control-group">
+        <label class="control-label" for="IDVuelo">Numero de Vuelo</label>
+	 <div class="controls">
+            <input id=placeholder=<?=$data['IDVuelo']?>< id="IDVuelo" name="IDVuelo" type="text">
+        </div>
+    </div>
 
 	<input name="_token" type="hidden">
     <div class="control-group">

@@ -9,38 +9,35 @@
             </tr>
             </thead>
             <tbody>
-                     <tr>
-                    <td>Id</td>
-                    <td><?=$data['IDCompra']?></td>
+                            <tr>
+                    <td>Id de la compra</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Status</td>
                     <td>PendingCapture</td>
                 </tr>
                 <tr>
-                    <td>Amount</td>
-                    <td><?=$data['Precio']*1.15?></td>
+                    <td>Costo total</td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td>Card Number</td>
-                    <td><?=$data['TarjetaCredito']?></td>
+                    <td>Numero de tarjeta</td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td>Expiration</td>
-                    <td><?=$data['Mes']?>/<?=$data['Anio']?></td>
+                    <td>F</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Auth Code</td>
-                    <td>8888</td>
+                    <td>888888</td>
                 </tr>
-                 <tr>
+                                    <tr>
                 <td>Date</td>
-                <td>
-			<?php
-			$fechaHora = date('Y-m-d H:i:s');
-			echo $fechaHora;
-			?>
-		</td>
+                <td>Tue, 04 Apr 2023 16:13:16 +0000</td>
             </tr>
             </tbody>
         </table>
+        <br/>
+        <pre>

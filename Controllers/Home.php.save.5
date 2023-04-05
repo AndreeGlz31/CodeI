@@ -3,7 +3,6 @@ namespace App\Controllers;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use App\Models\VuelosModel;
 use App\Models\CompraModel;
-use App\Models\ConfirmacionModel;
 
 class Home extends BaseController
 {
@@ -47,47 +46,49 @@ class Home extends BaseController
         	$vuelos = $model->getVueloById($IDVuelo);
     		}
 
-    		// Pasar los datos a la vista
+    		// Pasar los datos del vuelo a la vista
     		$data = $vuelos;
-
-        	return  view('templates/header')
-                	.view('templates/compra',['data' =>(array) $data])
-                	.view('templates/footer');
-	}
-	public function InsertarCompra(){
-	// Capturar los datos del formulario
+		 // Capturar los datos del formulario
     		$compra = [
-			'IDVuelo' =>$this->request->getPost('IDVuelo'),
-        		'Nombre' => $this->request->getPost('Nombre'),
-        		'Direccion' => $this->request->getPost('Direccion'),
-        		'Ciudad' => $this->request->getPost('Ciudad'),
-        		'Estado' => $this->request->getPost('Estado'),
-        		'CP' => $this->request->getPost('CP'),
-        		'TipoTarjeta' => $this->request->getPost('TipoTarjeta'),
-        		'TarjetaCredito' => $this->request->getPost('TarjetaCredito'),
-        		'Mes' => $this->request->getPost('Mes'),
-        		'Anio' => $this->request->getPost('Anio'),
-        		'NombreTarjeta' => $this->request->getPost('NombreTarjeta')
+        		'Nombre' => $this->request->getPost('nombre'),
+        		'Direccion' => $this->request->getPost('direccion'),
+        		'Ciudad' => $this->request->getPost('ciudad'),
+        		'Estado' => $this->request->getPost('estado'),
+        		'CP' => $this->request->getPost('cp'),
+        		'TipoTarjeta' => $this->request->getPost('tipo_tarjeta'),
+        		'TarjetaCredito' => $this->request->getPost('tarjeta_credito'),
+        		'Mes' => $this->request->getPost('mes'),
+        		'Anio' => $this->request->getPost('anio'),
+        		'NombreTarjeta' => $this->request->getPost('nombre_tarjeta')
 			];
 			$compraModel = new CompraModel();
 
     			// Insertar los datos en la tabla de compras
-    			$compraModel->insert($compra);
-
-		return	view('templates/header')
-			.view('templates/confirmar')
-			.view('templates/footer');
-	}
-	public function VerCompra($idvuelos){
-	 if($this->request->getMethod()==='post'){
-		$model = new CompraModel();
-		$compras = $model->getRecibo($idvuelos);
-		}
-		$data = $compras;
-
-
+    			if ($compraModel->insert($compra)) {
+        			// Mostrar mensaje de éxito
+        			$mensaje = 'La compra se ha realizado con éxito';
+    			} else {
+        			// Mostrar mensaje de error
+        			$mensaje = 'Ha ocurrido un error al realizar la compra';
+    				}
+public function confirmar(){
 	return	view('templates/header')
-		.view('templates/confirmar',['data' =>(array)$data])
+		.view('templates/confirmar')
+		.view('templates/footer');
+	}
+        	return  view('templates/header')
+                	.view('templates/compra',['data' =>(array) $data])
+                	.view('templates/footer');
+	}
+
+	public function InsertarCompra(){
+	return	view('templates/header')
+		.view('templates/confirmar')
+		.view('templates/footer');
+	}
+	public function confirmar(){
+	return	view('templates/header')
+		.view('templates/confirmar')
 		.view('templates/footer');
 	}
 

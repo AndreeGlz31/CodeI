@@ -47,14 +47,14 @@ class Home extends BaseController
         	$vuelos = $model->getVueloById($IDVuelo);
     		}
 
-    		// Pasar los datos a la vista
+    		// Pasar los datos del vuelo a la vista
     		$data = $vuelos;
 
         	return  view('templates/header')
                 	.view('templates/compra',['data' =>(array) $data])
                 	.view('templates/footer');
 	}
-	public function InsertarCompra(){
+	public function InsertarCompra($idCompra){
 	// Capturar los datos del formulario
     		$compra = [
 			'IDVuelo' =>$this->request->getPost('IDVuelo'),
@@ -71,23 +71,26 @@ class Home extends BaseController
 			];
 			$compraModel = new CompraModel();
 
+		if($this->request->getMethod()==='post'){
+			$model = new ConfirmacionModel();
+			$compras = $model->getCompraVuelo($idCompra);
+		}
+			$datos = $compras;
+
     			// Insertar los datos en la tabla de compras
     			$compraModel->insert($compra);
 
-		return	view('templates/header')
-			.view('templates/confirmar')
-			.view('templates/footer');
-	}
-	public function VerCompra($idvuelos){
-	 if($this->request->getMethod()==='post'){
-		$model = new CompraModel();
-		$compras = $model->getRecibo($idvuelos);
-		}
-		$data = $compras;
-
 
 	return	view('templates/header')
-		.view('templates/confirmar',['data' =>(array)$data])
+		.view('templates/confirmar')
+		.view('templates/footer');
+	}
+	public function VerCompra($idCompra){
+	 
+	
+
+	return	view('templates/header')
+		.view('templates/confirmar',['data' =>(array) $datos])
 		.view('templates/footer');
 	}
 
