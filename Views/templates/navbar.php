@@ -27,7 +27,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.php">
+                    <a class="navbar-brand" href="http://agonzalez.doqimi.net/">
                         BlazeDemo
                     </a>
                 </div>
@@ -39,7 +39,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                                                    <li><a href="login.php">Login</a></li>
+                            <li><a href="login.php">Login</a></li>
                             <li><a href="registro.php">Register</a></li>
                                             </ul>
                 </div>

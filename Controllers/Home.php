@@ -4,6 +4,7 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 use App\Models\VuelosModel;
 use App\Models\CompraModel;
 use App\Models\ConfirmacionModel;
+use App\Models\RegistroModel;
 
 class Home extends BaseController
 {
@@ -23,11 +24,38 @@ class Home extends BaseController
 		.view('templates/login')
 		.view('templates/footer');
     }
-   public function registro(){
-	return	view('templates/navbar')
-		.view('templates/registro')
-		.view('templates/footer');
-	}
+
+	public function registro(){
+
+                $rules = [
+                                'nombre' => 'required|min_length[3]|max_length[255]',
+                                'compania' => 'required|min_length[3]|max_length[255]',
+                                'correo_electronico' => 'required|valid_email|is_unique[registro.correo_electronico]',
+                                'contrasena' => 'required|min_length[8]|max_length[255]',
+                                'confirmar_contrasena' => 'matches[contrasena]',
+                        ];
+                if ($this->validate($rules)) {
+                        $Usuario = [
+                                        'nombre' => $this->request->getPost('nombre'),
+                                        'compania' => $this->request->getPost('compania'),
+                                        'correo_electronico' => $this->request->getPost('correo_electronico'),
+                                        'contrasena' => password_hash($this->request->getPost('contrasena'), PASSWORD_DEFAULT),
+					'confirmar_contrasena' => $this->request->getPost('confirmar_contrasena')
+                                        ];
+			$UsuarioModel = new RegistroModel();
+			$UsuarioModel->insert($Usuario);
+                        $session = session();
+                        $session->setFlashdata('success', 'Registro exitoso');
+                        return redirect()->to('/login.php');
+                        }
+
+                        else{
+                                return  view('templates/navbar')
+                                        .view('templates/registro')
+                                        .view('templates/footer');
+                }
+        }
+
 	public function reservar(){
 	if($this->request->getMethod()==='post'){
 		$model = new VuelosModel();
@@ -82,17 +110,6 @@ class Home extends BaseController
 			.view('templates/confirmar',['compraVuelo' => $compraVuelo])
 			.view('templates/footer');
 	}
-	//public function VerCompra($idvuelos){
-	 //if($this->request->getMethod()==='post'){
-	//	$model = new CompraModel();
-	//	$compras = $model->getRecibo($idvuelos);
-	//	}
-	//	$data = $compras;
 
-
-	//	return	view('templates/header')
-	//		.view('templates/recibo',['data' =>(array)$data])
-	//		.view('templates/footer');
-	//}
 
 }

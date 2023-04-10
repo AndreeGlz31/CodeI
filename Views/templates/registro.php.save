@@ -4,51 +4,50 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">Login</div>
                 <div class="panel-body">
 
-		<form class="form-horizontal" role="form" method="post" action="login.php">
+		<form class="form-horizontal" role="form" method="POST" action="login.php">
 
 			<div class="form-group">
                             <label for="nombre" class="col-md-4 control-label">Name</label>
-
-				<div class="col-md-6">
-                                	<input id="nombre" type="text" class="form-control" name="nombre" value="" required autofocus>
-				</div>
+				<div class="form-group">
+                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+                         </div>
 
 			</div>
 
                         <div class="form-group">
-                            <label for="compania" class="col-md-4 control-label">Company</label>
+                            <label for="password" class="col-md-4 control-label">Company</label>
 
                             <div class="col-md-6">
-                                <input id="compania" type="text" class="form-control" name="compania" required autofocus>
+                                <input id="company" type="text" class="form-control" name="company" required autofocus>
                          </div>
                         </div>
-
-
                         <div class="form-group">
-                            <label for="correo_electronico" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="correo_electronico" type="email" class="form-control" name="correo_electronico" value="" required autofocus>
+                                <input id="email" type="email" class="form-control" name="email" value="" required autofocus>
 
                         </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="contrasena" class="col-md-4 control-label">Password</label>
+                            <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
-                                <input id="contrasena" type="password" class="form-control" name="contrasena" required>
+                                <input id="password" type="password" class="form-control" name="password" required>
 
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="confirmar_contrasena" class="col-md-4 control-label">Confirm Password</label>
+                            <label for="password" class="col-md-4 control-label">Confirm Password</label>
 
                             <div class="col-md-6">
-                                <input id="confirmar_contrasena" type="password" class="form-control" name="confirmar_contrasena" required>
+                                <input id="password-confirm" type="password" class="form-control" name="password-confirmation" required>
 
                             </div>
                         </div>
