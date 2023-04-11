@@ -7,7 +7,7 @@
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
 
-		<form class="form-horizontal" role="form" method="post" action="login.php">
+		<form class="form-horizontal" role="form" method="post" action="/registro.php/registrar">
 
 			<div class="form-group">
                             <label for="nombre" class="col-md-4 control-label">Name</label>

@@ -33,6 +33,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/Vacaciones.php','Home::Vacaciones');
 $routes->get('/login.php','Home::login');
 $routes->get('/registro.php','Home::registro');
+$routes->post('/registro.php/registrar','Home::registrar');
 $routes->post('/reservar.php','Home::reservar');
 $routes->post('/compra.php/(:num)','Home::compra/$1');
 $routes->add('/compra.php/confirmar.php','Home::InsertarCompra');
