@@ -32,24 +32,47 @@ class Home extends BaseController
                      .view('templates/footer');
         }
 	 public function registrar(){
-    		$registroModel = new RegistroModel();
-
-    	$data = [
-        	'nombre' => $this->request->getPost('nombre'),
-        	'compania' => $this->request->getPost('compania'),
-        	'correo_electronico' => $this->request->getPost('correo_electronico'),
-        	'contrasena' => password_hash($this->request->getPost('contrasena'), PASSWORD_DEFAULT),
-        	'confirmacion_contrasena' => password_hash($this->request->getPost('confirmacion_contrasena'), PASSWORD_DEFAULT),
+		$this->validation = \Config\Services::validation();
+    	// Configuramos las reglas de validación para los campos del formulario
+    	$reglas = [
+        	'nombre' => 'required|max_length[255]',
+        	'compania' => 'required|max_length[255]',
+        	'correo_electronico' => 'required|valid_email|is_unique[registro.correo_electronico]',
+        	'contrasena' => 'required|min_length[8] |regex_match[/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/]',
+        	'confirmacion_contrasena' => 'required|matches[contrasena]'
     		];
 
-    	if ($registroModel->insert($data)) {
-        	// Si la inserción se realizó correctamente, redirigimos al usuario
-        	return  redirect()->to('http://agonzalez.doqimi.net/login.php');
+    	// Personalizamos los mensajes de error
+    	$mensajes = [
+        	'contrasena.regex_match' => 'La contraseña debe incluir al menos una letra mayúscula, una letra minúscula, un número y un carácter especial (@$!%*?&).'
+    		];
+
+    	// Ejecutamos la validación con las reglas definidas anteriormente
+    	if ($this->validate($reglas, $mensajes)) {
+        	// Si la validación falla, mostramos los errores al usuario
+        	return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
     	} else {
-        	// Si la inserción falla, mostramos un mensaje de error al usuario
-        	return redirect()->back()->withInput()->with('error', 'Ocurrió un error al registrar al usuario. Inténtelo de nuevo más tarde.');
+        	// Si la validación pasa, guardamos los datos del usuario en la base de datos
+        	$registroModel = new RegistroModel();
+
+        	$data = [
+            		'nombre' => $this->request->getPost('nombre'),
+            		'compania' => $this->request->getPost('compania'),
+            		'correo_electronico' => $this->request->getPost('correo_electronico'),
+            		'contrasena' => password_hash($this->request->getPost('contrasena'), PASSWORD_DEFAULT),
+            		'confirmacion_contrasena' => password_hash ($this->request->getPost('confirmacion_contrasena'),PASSWORD_DEFAULT),
+        		];
+
+        	if ($registroModel->insert($data)) {
+            		// Si la inserción se realizó correctamente, redirigimos al usuario
+            		return  redirect()->to('http://agonzalez.doqimi.net/login.php');
+        	} else {
+            	// Si la inserción falla, mostramos un mensaje de error al usuario
+            	return redirect()->back()->withInput()->with('error', 'Ocurrió un error al registrar al usuario. Inténtelo de nuevo más tarde.');
+        		}
     		}
-}
+	}
+
 
 
 
