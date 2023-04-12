@@ -25,6 +25,25 @@ class Home extends BaseController
 		.view('templates/footer');
     }
 
+   public function LoginUsuario(){
+    	$correo_electronico = $this->request->getPost('correo_electronico');
+    	$contrasena = $this->request->getPost('contrasena');
+
+    	$registroModel = new RegistroModel();
+    	$usuario = $registroModel->buscarUsuario($correo_electronico, $contrasena);
+
+    	if ($usuario) {
+        	// Si el usuario es autenticado, inicie la sesión y redirija a la página de inicio
+        	session()->set('usuario', $usuario);
+        return redirect()->to('http://agonzalez.doqimi.net/index.php');
+    	} else {
+        	// Si el usuario no es autenticado, muestre un mensaje de error y redirija a la página de inicio de sesión
+        	session()->setFlashdata('error', 'Correo electrónico o contraseña incorrectos');
+        return redirect()->to('http://agonzalez.doqimi.net/login.php');
+    		}
+	}
+
+
 	public function registro(){
 
              return  view('templates/navbar')
@@ -130,6 +149,10 @@ class Home extends BaseController
 			.view('templates/confirmar',['compraVuelo' => $compraVuelo])
 			.view('templates/footer');
 	}
+
+	public function muestraVistaLogin() {
+    		return view('login', ['error' => session()->getFlashdata('error')]);
+}
 
 
 }

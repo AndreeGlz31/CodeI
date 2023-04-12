@@ -30,14 +30,15 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/Vacaciones.php','Home::Vacaciones');
+$routes->get('/Vacaciones.php','Home::vacaciones');
 $routes->get('/login.php','Home::login');
+$routes->post('/login.php/ingresar','Home::LoginUsuario');
 $routes->get('/registro.php','Home::registro');
 $routes->post('/registro.php/registrar','Home::registrar');
 $routes->post('/reservar.php','Home::reservar');
 $routes->post('/compra.php/(:num)','Home::compra/$1');
 $routes->add('/compra.php/confirmar.php','Home::InsertarCompra');
-//$routes->post('/compra.php/recibo.php/(:num)','Home::verCompra/$1');
+
 
 use App\Controllers\Home;
 

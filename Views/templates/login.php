@@ -6,26 +6,23 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="https://blazedemo.com/login">
-                        <input type="hidden" name="_token" value="pwWGfNDvXGWSaJD6pHyfPt03f36XlZWafMPySs9f">
+                    <form class="form-horizontal" role="form" method="POST" action="/login.php/ingresar">
 
-                        <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="" required autofocus>
-
-                                                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                       <div class="form-group">
+                            <label for="correo_electronico" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="correo_electronico" type="email" class="form-control" name="correo_electronico" value="" required autofocus>
+			</div>
+                      </div>
 
-                                                            </div>
-                        </div>
+                      <div class="form-group">
+                            <label for="contrasena" class="col-md-4 control-label">Password</label>
+
+                            <div class="col-md-6">
+                                <input id="contrasena" type="password" class="form-control" name="contrasena" required>
+			</div>
+                     </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
@@ -46,6 +43,12 @@
                                 <a class="btn btn-link" href="recuperacion.php">
                                     Forgot Your Password?
                                 </a>
+					<p>
+				 	<?php if (session()->getFlashdata('error')): ?>
+            					<div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
+        				<?php endif; ?>
+    				    </div>
+				</div>
                             </div>
                         </div>
                     </form>
